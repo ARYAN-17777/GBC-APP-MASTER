@@ -1,0 +1,48 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "orders": {
+      ".indexOn": ["status", "timestamp", "userId"],
+      "$orderId": {
+        ".validate": "newData.hasChildren(['id', 'status', 'timestamp'])",
+        "id": {
+          ".validate": "newData.isString()"
+        },
+        "status": {
+          ".validate": "newData.isString() && (newData.val() == 'pending' || newData.val() == 'preparing' || newData.val() == 'ready' || newData.val() == 'completed' || newData.val() == 'cancelled')"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber() || newData.val() == '.sv'"
+        },
+        "userId": {
+          ".validate": "newData.isString()"
+        },
+        "items": {
+          ".validate": "newData.isString()"
+        },
+        "totalAmount": {
+          ".validate": "newData.isNumber()"
+        },
+        "customerName": {
+          ".validate": "newData.isString()"
+        },
+        "customerPhone": {
+          ".validate": "newData.isString()"
+        }
+      }
+    },
+    "analytics": {
+      ".read": "auth != null && auth.token.role == 'admin'",
+      ".write": "auth != null"
+    },
+    "restaurant": {
+      ".read": true,
+      ".write": "auth != null && auth.token.role == 'admin'"
+    },
+    "menu": {
+      ".read": true,
+      ".write": "auth != null && auth.token.role == 'admin'"
+    }
+  }
+}

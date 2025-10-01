@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-09-13T17:46:43.852Z",
+  "tests": [
+    {
+      "name": "Module Import",
+      "status": "PASSED"
+    },
+    {
+      "name": "ESC/POS Commands",
+      "status": "PASSED"
+    },
+    {
+      "name": "Receipt Generation",
+      "status": "PASSED"
+    },
+    {
+      "name": "Bluetooth Simulation",
+      "status": "PASSED"
+    },
+    {
+      "name": "Data Transmission",
+      "status": "PASSED"
+    },
+    {
+      "name": "Fallback Mechanism",
+      "status": "PASSED"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "successRate": "100%"
+  }
+}

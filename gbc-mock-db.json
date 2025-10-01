@@ -1,0 +1,233 @@
+{
+  "orders": [
+    {
+      "id": "order_001",
+      "orderNumber": "GBC-001",
+      "status": "preparing",
+      "customerName": "John Doe",
+      "customerPhone": "+44 7700 900123",
+      "items": [
+        {
+          "id": "item_001",
+          "name": "Chicken Biryani",
+          "quantity": 2,
+          "price": 15.99,
+          "customizations": ["Extra spicy"]
+        },
+        {
+          "id": "item_002",
+          "name": "Mango Lassi",
+          "quantity": 1,
+          "price": 4.50,
+          "customizations": []
+        }
+      ],
+      "total": 36.48,
+      "timestamp": "2024-08-30T14:30:00Z",
+      "apiSource": true,
+      "user": {
+        "name": "John Doe",
+        "phone": "+44 7700 900123"
+      },
+      "restaurant": {
+        "name": "Bilimoria's Canteen"
+      }
+    },
+    {
+      "id": "order_002",
+      "orderNumber": "GBC-002",
+      "status": "ready",
+      "customerName": "Jane Smith",
+      "customerPhone": "+44 7700 900124",
+      "items": [
+        {
+          "id": "item_003",
+          "name": "Vegetable Curry",
+          "quantity": 1,
+          "price": 12.99,
+          "customizations": ["Medium spice"]
+        },
+        {
+          "id": "item_004",
+          "name": "Naan Bread",
+          "quantity": 2,
+          "price": 3.50,
+          "customizations": []
+        }
+      ],
+      "total": 19.99,
+      "timestamp": "2024-08-30T13:45:00Z",
+      "apiSource": true,
+      "user": {
+        "name": "Jane Smith",
+        "phone": "+44 7700 900124"
+      },
+      "restaurant": {
+        "name": "Bilimoria's Canteen"
+      }
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "item_001",
+      "name": "Chicken Biryani",
+      "price": 15.99,
+      "category": "Main Course",
+      "available": true,
+      "description": "Aromatic basmati rice with tender chicken pieces",
+      "preparationTime": "20-25 minutes",
+      "allergens": ["gluten"],
+      "dietary": ["halal"],
+      "image": "https://example.com/images/chicken-biryani.jpg"
+    },
+    {
+      "id": "item_002",
+      "name": "Mango Lassi",
+      "price": 4.50,
+      "category": "Beverages",
+      "available": true,
+      "description": "Traditional yogurt-based mango drink",
+      "preparationTime": "2-3 minutes",
+      "allergens": ["dairy"],
+      "dietary": ["vegetarian"],
+      "image": "https://example.com/images/mango-lassi.jpg"
+    },
+    {
+      "id": "item_003",
+      "name": "Vegetable Curry",
+      "price": 12.99,
+      "category": "Main Course",
+      "available": true,
+      "description": "Mixed vegetables in rich curry sauce",
+      "preparationTime": "15-20 minutes",
+      "allergens": [],
+      "dietary": ["vegetarian", "vegan"],
+      "image": "https://example.com/images/vegetable-curry.jpg"
+    },
+    {
+      "id": "item_004",
+      "name": "Naan Bread",
+      "price": 3.50,
+      "category": "Sides",
+      "available": true,
+      "description": "Fresh baked traditional Indian bread",
+      "preparationTime": "5-8 minutes",
+      "allergens": ["gluten", "dairy"],
+      "dietary": ["vegetarian"],
+      "image": "https://example.com/images/naan-bread.jpg"
+    },
+    {
+      "id": "item_005",
+      "name": "Chicken Tikka Masala",
+      "price": 16.99,
+      "category": "Main Course",
+      "available": true,
+      "description": "Tender chicken in creamy tomato sauce",
+      "preparationTime": "25-30 minutes",
+      "allergens": ["dairy"],
+      "dietary": ["halal"],
+      "image": "https://example.com/images/chicken-tikka-masala.jpg"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_001",
+      "title": "New Order Received",
+      "message": "Order #GBC-001 has been placed by John Doe",
+      "timestamp": "2024-08-30T14:30:00Z",
+      "type": "order",
+      "read": false,
+      "data": {
+        "orderId": "order_001",
+        "orderNumber": "GBC-001"
+      }
+    },
+    {
+      "id": "notif_002",
+      "title": "API Connected",
+      "message": "Real-time API connection established successfully",
+      "timestamp": "2024-08-30T14:25:00Z",
+      "type": "system",
+      "read": false,
+      "data": {
+        "connectionStatus": "connected"
+      }
+    },
+    {
+      "id": "notif_003",
+      "title": "Order Ready",
+      "message": "Order #GBC-002 is ready for pickup",
+      "timestamp": "2024-08-30T14:15:00Z",
+      "type": "order_ready",
+      "read": false,
+      "data": {
+        "orderId": "order_002",
+        "orderNumber": "GBC-002"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "user_001",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "+44 7700 900123",
+      "preferences": {
+        "dietaryRestrictions": ["halal"],
+        "spiceLevel": "medium",
+        "favoriteItems": ["item_001", "item_002"]
+      },
+      "addresses": [
+        {
+          "id": "addr_001",
+          "label": "Home",
+          "street": "123 Main Street",
+          "city": "London",
+          "postcode": "SW1A 1AA",
+          "country": "UK",
+          "isDefault": true
+        }
+      ]
+    },
+    {
+      "id": "user_002",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "+44 7700 900124",
+      "preferences": {
+        "dietaryRestrictions": ["vegetarian"],
+        "spiceLevel": "mild",
+        "favoriteItems": ["item_003", "item_004"]
+      },
+      "addresses": [
+        {
+          "id": "addr_002",
+          "label": "Office",
+          "street": "456 Business Ave",
+          "city": "London",
+          "postcode": "EC1A 1BB",
+          "country": "UK",
+          "isDefault": true
+        }
+      ]
+    }
+  ],
+  "analytics": {
+    "totalOrders": 2,
+    "totalRevenue": 56.47,
+    "averageOrderValue": 28.24,
+    "popularItems": [
+      {
+        "id": "item_001",
+        "name": "Chicken Biryani",
+        "orderCount": 2
+      },
+      {
+        "id": "item_003",
+        "name": "Vegetable Curry",
+        "orderCount": 1
+      }
+    ],
+    "lastUpdated": "2024-08-30T14:30:00Z"
+  }
+}

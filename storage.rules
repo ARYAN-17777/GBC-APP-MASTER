@@ -1,0 +1,27 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Images uploads - authenticated users only
+    match /images/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+                      request.resource.size < 5 * 1024 * 1024 && // 5MB limit
+                      request.resource.contentType.matches('image/.*');
+    }
+    
+    // Receipts - authenticated users only
+    match /receipts/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+                      request.resource.size < 2 * 1024 * 1024; // 2MB limit
+    }
+    
+    // Menu images - public read, admin write
+    match /menu/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+                      request.resource.size < 5 * 1024 * 1024 && // 5MB limit
+                      request.resource.contentType.matches('image/.*');
+    }
+  }
+}
