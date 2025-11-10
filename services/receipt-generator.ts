@@ -443,25 +443,20 @@ export class ThermalReceiptGenerator {
     .header-text {
       font-size: ${14 * baseSize}pt;
       font-weight: bold;
-      text-align: left;
+      text-align: center;
       margin: 0;
       padding: 0;
       line-height: 1.2;
     }
 
     .divider {
-      border: none;
-      margin: ${1 * baseSize}mm 0;
-      padding: 0;
-      line-height: 1;
-    }
-
-    .divider::before {
-      content: '------------------------------------------';
-      display: block;
       font-size: ${12 * baseSize}pt;
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
+      margin: ${1 * baseSize}mm 0;
+      padding: 0;
+      line-height: 1;
+      text-align: left;
     }
 
     .info-line {
@@ -550,15 +545,15 @@ export class ThermalReceiptGenerator {
 <body>
   <!-- Restaurant Header - Dynamic from order payload -->
   <div class="header-text">${dynamicRestaurantName}</div>
-  <div class="header-text" style="text-align: center;">${restaurantAddress}</div>
+  <div class="header-text">${restaurantAddress}</div>
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Order Information -->
   <div class="info-line">Order: ${formattedOrderNumber}</div>
   <div class="info-line">Date: ${orderDate}</div>
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Customer Information -->
   <div class="info-line">Customer: ${customerName}</div>
@@ -566,12 +561,12 @@ export class ThermalReceiptGenerator {
   ${customerAddress ? `<div class="info-line">Address: ${addressLines[0] || ''}</div>
   ${addressLines[1] ? `<div class="info-line" style="padding-left: ${9 * baseSize}mm;">${addressLines[1]}</div>` : ''}` : ''}
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Items Section Header -->
   <div class="section-header">Items</div>
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Items List -->
   ${order.items.map(item => {
@@ -625,7 +620,7 @@ export class ThermalReceiptGenerator {
     return itemHtml;
   }).join('')}
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Totals Section -->
   <div class="total-line">
@@ -641,7 +636,7 @@ export class ThermalReceiptGenerator {
     <span class="total-value">£${discount.toFixed(2)}</span>
   </div>
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <div class="total-line">
     <span class="total-label">Total</span>
@@ -649,17 +644,17 @@ export class ThermalReceiptGenerator {
   </div>
 
   ${orderNotes && orderNotes.trim() !== '' ? `
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
   <div class="info-line">Order note: ${orderNotes}</div>
   ` : ''}
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 
   <!-- Footer -->
   <div class="footer-text">Thank you for ordering!</div>
   <div class="footer-text">See you again online!</div>
 
-  <div class="divider"></div>
+  <div class="divider">------------------------------------------</div>
 </body>
 </html>`;
   }
