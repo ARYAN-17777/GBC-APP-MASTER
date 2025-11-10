@@ -22,9 +22,13 @@
     "preview": {
       "distribution": "internal",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
       },
       "node": "20.18.0",
+      "cache": {
+        "disabled": true
+      },
       "env": {
         "NODE_ENV": "staging",
         "EXPO_PUBLIC_APP_ENV": "staging",

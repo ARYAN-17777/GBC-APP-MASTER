@@ -16,9 +16,9 @@ export default function TestNotifications() {
         <Text style={styles.buttonText}>Go to Notifications</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push("/dashboard")}
+        onPress={() => router.push("/(tabs)")}
       >
         <Text style={styles.buttonText}>Go to Dashboard</Text>
       </TouchableOpacity>

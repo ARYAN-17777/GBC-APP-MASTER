@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "General Bilimoria's Canteen",
-    "slug": "swapnil11",
-    "version": "3.0.0",
+    "slug": "gbc-production",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
@@ -22,10 +22,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FF8C00"
       },
       "package": "com.generalbilimoria.canteen",
-      "versionCode": 4,
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE",
@@ -46,10 +45,14 @@
       "typedRoutes": true
     },
     "extra": {
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "0bc2438b-c5c5-4ac5-ba53-b736dca343c6"
+        "projectId": "ac3264ce-84ea-4818-b728-0f53f5fc1078"
       }
     },
-    "owner": "swapnil.diginova"
+    "description": "Official mobile app for General Bilimoria's Canteen - Order food, manage orders, thermal receipt printing, and enjoy real-time updates.",
+    "owner": "gbc-production"
   }
 }

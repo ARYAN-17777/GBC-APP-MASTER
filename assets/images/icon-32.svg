@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background circle -->
+  <circle cx="16" cy="16" r="16" fill="#000000"/>
+  
+  <!-- Simplified text for small icons -->
+  <text x="16" y="11.2" font-family="Arial, sans-serif" font-size="3.84" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">GBC</text>
+  <text x="16" y="20.8" font-family="Arial, sans-serif" font-size="2.56" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">2023</text>
+</svg>

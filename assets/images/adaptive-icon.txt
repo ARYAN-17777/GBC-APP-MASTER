@@ -1,0 +1,20 @@
+
+# adaptive-icon.png - Logo Specification
+
+## Design Requirements:
+- Size: 1024x1024 pixels
+- Background: Black circle (#000000)
+- Text: White (#FFFFFF)
+
+## Text Layout:
+- Top (curved): "GENERAL" 
+- Center: "BILIMORIA'S"
+- Middle: "20 CANTEEN 23"
+- Bottom (curved): "ESTD. LONDON, UK"
+
+## Font:
+- Family: Arial or similar sans-serif
+- Weight: Bold for main text, normal for bottom text
+- Color: White (#FFFFFF)
+
+This file should be replaced with an actual PNG image matching the reference design.

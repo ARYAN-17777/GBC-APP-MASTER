@@ -1,0 +1,30 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="256" cy="256" r="256" fill="#F77F00"/>
+  
+  <!-- GENERAL text (curved at top) -->
+  <path id="top-curve-512" d="M 76.8 256 A 179.2 179.2 0 0 1 435.2 256" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" fill="#FFFFFF" letter-spacing="1.024">
+    <textPath href="#top-curve-512" startOffset="50%" text-anchor="middle">GENERAL</textPath>
+  </text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="256" y="245.76" font-family="Arial, sans-serif" font-size="30.72" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="0.512">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="194.56" y="296.96" font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="256" y="296.96" font-family="Arial, sans-serif" font-size="25.6" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="1.536">CANTEEN</text>
+    <text x="317.44" y="296.96" font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (curved at bottom) -->
+  <path id="bottom-curve-512" d="M 435.2 256 A 179.2 179.2 0 0 1 76.8 256" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="12.8" font-weight="normal" fill="#FFFFFF" letter-spacing="0.512">
+    <textPath href="#bottom-curve-512" startOffset="50%" text-anchor="middle">ESTD. LONDON, UK</textPath>
+  </text>
+</svg>

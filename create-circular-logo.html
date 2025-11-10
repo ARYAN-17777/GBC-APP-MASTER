@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GBC Circular Logo Generator</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            font-family: Arial, sans-serif; 
+            background: #f0f0f0;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        canvas { 
+            border: 2px solid #ddd; 
+            margin: 20px; 
+            background: white;
+        }
+        .preview { 
+            display: inline-block; 
+            margin: 10px; 
+            padding: 20px; 
+            background: #F47B20; 
+            border-radius: 10px;
+        }
+        button {
+            background: #F47B20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #F77F00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GBC Circular Logo Generator</h1>
+        <p>Creating optimized circular logo for General Bilimoria's Canteen</p>
+        
+        <canvas id="logoCanvas" width="240" height="240"></canvas>
+        
+        <div class="preview">
+            <canvas id="previewCanvas" width="80" height="80"></canvas>
+            <p style="color: white; margin: 10px 0 0 0;">Header Preview</p>
+        </div>
+        
+        <br>
+        <button onclick="downloadLogo()">Download PNG Logo</button>
+        <button onclick="downloadPreview()">Download Preview</button>
+    </div>
+
+    <script>
+        function createCircularLogo(canvas, size = 240) {
+            const ctx = canvas.getContext('2d');
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = size / 2 - 10;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Create circular background
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#F77F00';
+            ctx.fill();
+            
+            // Inner circle for depth
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius - 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#F47B20';
+            ctx.fill();
+            
+            // Set text properties
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Scale font sizes based on canvas size
+            const scale = size / 240;
+            
+            // "GENERAL" text (curved at top)
+            ctx.font = `bold ${Math.round(18 * scale)}px Helvetica, Arial, sans-serif`;
+            ctx.fillText('GENERAL', centerX, centerY - radius * 0.6);
+            
+            // "BILIMORIA'S" text (main center)
+            ctx.font = `bold ${Math.round(22 * scale)}px Helvetica, Arial, sans-serif`;
+            ctx.fillText("BILIMORIA'S", centerX, centerY - radius * 0.15);
+            
+            // "CANTEEN" text
+            ctx.font = `normal ${Math.round(20 * scale)}px Helvetica, Arial, sans-serif`;
+            ctx.fillText('CANTEEN', centerX, centerY + radius * 0.15);
+            
+            // "ESTD. LONDON, UK" text (smaller, bottom)
+            ctx.font = `normal ${Math.round(12 * scale)}px Helvetica, Arial, sans-serif`;
+            ctx.globalAlpha = 0.9;
+            ctx.fillText('ESTD. LONDON, UK', centerX, centerY + radius * 0.5);
+            
+            // Year markers
+            ctx.font = `bold ${Math.round(14 * scale)}px Helvetica, Arial, sans-serif`;
+            ctx.globalAlpha = 0.7;
+            ctx.fillText('20', centerX - radius * 0.6, centerY + radius * 0.7);
+            ctx.fillText('23', centerX + radius * 0.6, centerY + radius * 0.7);
+            
+            ctx.globalAlpha = 1.0;
+        }
+        
+        // Create main logo
+        const mainCanvas = document.getElementById('logoCanvas');
+        createCircularLogo(mainCanvas, 240);
+        
+        // Create preview
+        const previewCanvas = document.getElementById('previewCanvas');
+        createCircularLogo(previewCanvas, 80);
+        
+        function downloadLogo() {
+            const link = document.createElement('a');
+            link.download = 'gbc-circular-logo.png';
+            link.href = mainCanvas.toDataURL();
+            link.click();
+        }
+        
+        function downloadPreview() {
+            const link = document.createElement('a');
+            link.download = 'gbc-logo-preview.png';
+            link.href = previewCanvas.toDataURL();
+            link.click();
+        }
+        
+        console.log('GBC Circular Logo Generator Ready');
+        console.log('Main logo size: 240x240px');
+        console.log('Preview size: 80x80px');
+        console.log('Colors: Background #F77F00, Inner #F47B20, Text #FFFFFF');
+    </script>
+</body>
+</html>

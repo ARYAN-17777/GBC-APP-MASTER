@@ -1,0 +1,227 @@
+// Create a simple but effective GBC icon using Canvas API simulation
+const fs = require('fs');
+const path = require('path');
+
+console.log('🎨 Creating Simple GBC Icon with Exact Design');
+console.log('=============================================');
+
+// Create a simple HTML file that generates the exact icon and auto-downloads it
+const iconGeneratorHTML = `<!DOCTYPE html>
+<html>
+<head>
+    <title>GBC Icon Generator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #f0f0f0;
+            text-align: center;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        canvas { 
+            border: 2px solid #ddd; 
+            margin: 20px; 
+            border-radius: 10px;
+        }
+        button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover { background: #e67e00; }
+        .preview { margin: 20px 0; }
+        .download-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 GBC Icon Generator</h1>
+        <p>This will create the exact GBC icon as requested</p>
+        
+        <div class="preview">
+            <h3>Preview (200x200)</h3>
+            <canvas id="previewCanvas" width="200" height="200"></canvas>
+        </div>
+        
+        <div>
+            <h3>Full Size Icons (1024x1024)</h3>
+            <canvas id="mainCanvas" width="1024" height="1024" style="display:none;"></canvas>
+            <canvas id="adaptiveCanvas" width="1024" height="1024" style="display:none;"></canvas>
+        </div>
+        
+        <div>
+            <button onclick="generateIcons()">🎯 Generate GBC Icons</button>
+        </div>
+        
+        <div id="downloads" style="display:none;">
+            <h3>✅ Icons Generated Successfully!</h3>
+            <a id="mainDownload" class="download-link">📱 Download Main Icon (icon.png)</a>
+            <a id="adaptiveDownload" class="download-link">🤖 Download Adaptive Icon (adaptive-icon.png)</a>
+            <p><strong>Instructions:</strong></p>
+            <ol style="text-align: left; max-width: 500px; margin: 0 auto;">
+                <li>Download both PNG files</li>
+                <li>Replace icon.png and adaptive-icon.png in assets/images/ folder</li>
+                <li>Run EAS build again</li>
+                <li>Your APK will have the exact GBC logo!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function drawGBCIcon(canvas, isAdaptive = false) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Orange background
+            ctx.fillStyle = '#FF8C00';
+            if (isAdaptive) {
+                // Full background for adaptive icon
+                ctx.fillRect(0, 0, size, size);
+            } else {
+                // Rounded rectangle for main icon
+                ctx.beginPath();
+                ctx.roundRect(0, 0, size, size, size * 0.02);
+                ctx.fill();
+            }
+            
+            // Text settings
+            ctx.fillStyle = '#2C3E50'; // Dark blue text
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Calculate text sizes and positions
+            const scale = isAdaptive ? 0.7 : 1; // Smaller text for adaptive icon
+            const centerX = size / 2;
+            
+            // GENERAL
+            ctx.font = \`bold \${size * 0.08 * scale}px Arial\`;
+            ctx.letterSpacing = '2px';
+            ctx.fillText('GENERAL', centerX, size * 0.25);
+            
+            // BILIMORIA'S
+            ctx.font = \`bold \${size * 0.08 * scale}px Arial\`;
+            ctx.letterSpacing = '2px';
+            ctx.fillText("BILIMORIA'S", centerX, size * 0.4);
+            
+            // 20 CANTEEN 21
+            ctx.font = \`bold \${size * 0.08 * scale}px Arial\`;
+            ctx.letterSpacing = '3px';
+            ctx.fillText('20 CANTEEN 21', centerX, size * 0.6);
+            
+            // ESTD LONDON UK
+            ctx.font = \`normal \${size * 0.05 * scale}px Arial\`;
+            ctx.letterSpacing = '2px';
+            ctx.fillText('ESTD LONDON UK', centerX, size * 0.8);
+        }
+        
+        function generateIcons() {
+            // Generate preview
+            const previewCanvas = document.getElementById('previewCanvas');
+            drawGBCIcon(previewCanvas, false);
+            
+            // Generate main icon
+            const mainCanvas = document.getElementById('mainCanvas');
+            drawGBCIcon(mainCanvas, false);
+            
+            // Generate adaptive icon
+            const adaptiveCanvas = document.getElementById('adaptiveCanvas');
+            drawGBCIcon(adaptiveCanvas, true);
+            
+            // Create download links
+            mainCanvas.toBlob(function(blob) {
+                const link = document.getElementById('mainDownload');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'icon.png';
+            });
+            
+            adaptiveCanvas.toBlob(function(blob) {
+                const link = document.getElementById('adaptiveDownload');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'adaptive-icon.png';
+            });
+            
+            // Show downloads
+            document.getElementById('downloads').style.display = 'block';
+        }
+        
+        // Auto-generate on page load
+        window.onload = function() {
+            // Generate preview immediately
+            const previewCanvas = document.getElementById('previewCanvas');
+            drawGBCIcon(previewCanvas, false);
+        };
+    </script>
+</body>
+</html>`;
+
+try {
+  // Save the HTML generator
+  fs.writeFileSync(path.join(__dirname, 'gbc-icon-generator.html'), iconGeneratorHTML);
+  console.log('✅ Created GBC icon generator HTML');
+
+  // Also create a simple Node.js script to open the HTML file
+  const openScript = `const { exec } = require('child_process');
+const path = require('path');
+
+const htmlFile = path.join(__dirname, 'gbc-icon-generator.html');
+const command = process.platform === 'win32' ? \`start \${htmlFile}\` : 
+               process.platform === 'darwin' ? \`open \${htmlFile}\` : 
+               \`xdg-open \${htmlFile}\`;
+
+exec(command, (error) => {
+  if (error) {
+    console.log('Please manually open: gbc-icon-generator.html');
+  } else {
+    console.log('✅ Opened GBC icon generator in browser');
+  }
+});`;
+
+  fs.writeFileSync(path.join(__dirname, 'open-icon-generator.js'), openScript);
+  console.log('✅ Created browser opener script');
+
+  console.log('');
+  console.log('🎯 EXACT GBC ICON SOLUTION:');
+  console.log('===========================');
+  console.log('1. Run: node open-icon-generator.js');
+  console.log('2. OR manually open: gbc-icon-generator.html');
+  console.log('3. Click "Generate GBC Icons" button');
+  console.log('4. Download both PNG files (icon.png and adaptive-icon.png)');
+  console.log('5. Replace the files in assets/images/ folder');
+  console.log('6. Run EAS build again');
+  console.log('');
+  console.log('🎨 This will create the EXACT icon you showed:');
+  console.log('- Orange background (#FF8C00)');
+  console.log('- GENERAL');
+  console.log('- BILIMORIA\'S');
+  console.log('- 20 CANTEEN 21');
+  console.log('- ESTD LONDON UK');
+  console.log('- Dark blue text (#2C3E50)');
+  console.log('');
+  console.log('📱 Your APK will then show the correct GBC logo!');
+
+} catch (error) {
+  console.error('❌ Error creating icon generator:', error);
+}

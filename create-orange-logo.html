@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Orange GBC Logo</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #f0f0f0; font-family: Arial, sans-serif; }
+        .logo-container { text-align: center; margin: 20px 0; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🎨 Create Orange GBC Logo</h1>
+    <p>Creating the exact logo with orange background (#F77F00) as specified</p>
+    
+    <div class="logo-container">
+        <h2>Home Page Logo (200x200)</h2>
+        <canvas id="home-canvas" width="200" height="200"></canvas>
+        <br>
+        <button onclick="downloadLogo('home', 200)">Download Home Logo PNG</button>
+    </div>
+    
+    <div class="logo-container">
+        <h2>App Icon (512x512)</h2>
+        <canvas id="icon-canvas" width="512" height="512"></canvas>
+        <br>
+        <button onclick="downloadLogo('icon', 512)">Download Icon PNG</button>
+    </div>
+    
+    <div class="logo-container">
+        <h2>Adaptive Icon (1024x1024)</h2>
+        <canvas id="adaptive-canvas" width="1024" height="1024"></canvas>
+        <br>
+        <button onclick="downloadLogo('adaptive', 1024)">Download Adaptive Icon PNG</button>
+    </div>
+    
+    <div class="logo-container">
+        <h2>Favicon (32x32)</h2>
+        <canvas id="favicon-canvas" width="32" height="32"></canvas>
+        <br>
+        <button onclick="downloadLogo('favicon', 32)">Download Favicon PNG</button>
+    </div>
+
+    <script>
+        function createLogo(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = size / 2;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Draw orange circle background
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#F77F00'; // Orange background
+            ctx.fill();
+            
+            // Set text properties
+            ctx.fillStyle = '#FFFFFF'; // White text
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Calculate font sizes based on canvas size
+            const baseFontSize = size / 25;
+            const mainFontSize = size / 20;
+            const largeFontSize = size / 15;
+            
+            // Draw "GENERAL" text (curved at top)
+            ctx.font = `bold ${baseFontSize}px Arial, sans-serif`;
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            const generalText = "GENERAL";
+            const angleStep = 0.15;
+            const startAngle = -((generalText.length - 1) * angleStep) / 2;
+            
+            for (let i = 0; i < generalText.length; i++) {
+                ctx.save();
+                ctx.rotate(startAngle + i * angleStep);
+                ctx.translate(0, -radius * 0.7);
+                ctx.rotate(Math.PI);
+                ctx.fillText(generalText[i], 0, 0);
+                ctx.restore();
+            }
+            ctx.restore();
+            
+            // Draw "BILIMORIA'S" text (main center)
+            ctx.font = `bold ${largeFontSize}px Arial, sans-serif`;
+            ctx.fillText("BILIMORIA'S", centerX, centerY - size * 0.05);
+            
+            // Draw "20 CANTEEN 23" text (center)
+            ctx.font = `bold ${mainFontSize}px Arial, sans-serif`;
+            const canteenY = centerY + size * 0.1;
+            
+            // Draw "20"
+            ctx.fillText("20", centerX - size * 0.15, canteenY);
+            
+            // Draw "CANTEEN"
+            ctx.fillText("CANTEEN", centerX, canteenY);
+            
+            // Draw "23"
+            ctx.fillText("23", centerX + size * 0.15, canteenY);
+            
+            // Draw "ESTD. LONDON, UK" text (curved at bottom)
+            ctx.font = `${baseFontSize * 0.8}px Arial, sans-serif`;
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            const estdText = "ESTD. LONDON, UK";
+            const estdAngleStep = 0.08;
+            const estdStartAngle = -((estdText.length - 1) * estdAngleStep) / 2;
+            
+            for (let i = 0; i < estdText.length; i++) {
+                ctx.save();
+                ctx.rotate(estdStartAngle + i * estdAngleStep);
+                ctx.translate(0, radius * 0.7);
+                ctx.fillText(estdText[i], 0, 0);
+                ctx.restore();
+            }
+            ctx.restore();
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        function downloadLogo(type, size) {
+            let canvas, filename;
+            
+            switch(type) {
+                case 'home':
+                    canvas = document.getElementById('home-canvas');
+                    filename = 'gbc-logo.png';
+                    break;
+                case 'icon':
+                    canvas = document.getElementById('icon-canvas');
+                    filename = 'icon.png';
+                    break;
+                case 'adaptive':
+                    canvas = document.getElementById('adaptive-canvas');
+                    filename = 'adaptive-icon.png';
+                    break;
+                case 'favicon':
+                    canvas = document.getElementById('favicon-canvas');
+                    filename = 'favicon.png';
+                    break;
+            }
+            
+            if (canvas) {
+                createLogo(canvas, size);
+                downloadCanvas(canvas, filename);
+            }
+        }
+        
+        // Auto-generate logos on load
+        window.onload = function() {
+            createLogo(document.getElementById('home-canvas'), 200);
+            createLogo(document.getElementById('icon-canvas'), 512);
+            createLogo(document.getElementById('adaptive-canvas'), 1024);
+            createLogo(document.getElementById('favicon-canvas'), 32);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1284" height="2778" viewBox="0 0 1284 2778" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1284" height="2778" fill="#F47B20"/>
+  <rect x="142" y="1189" width="1000" height="400" fill="#FFFFFF" rx="50"/>
+  <text x="50%" y="1320" text-anchor="middle" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#F47B20">General Bilimoria's</text>
+  <text x="50%" y="1420" text-anchor="middle" font-family="Arial, sans-serif" font-size="60" fill="#F47B20">Canteen</text>
+  <text x="50%" y="1500" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#666666">Sawbridgeworth</text>
+  <circle cx="642" cy="900" r="150" fill="#FFFFFF" opacity="0.9"/>
+  <text x="50%" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="100" font-weight="bold" fill="#F47B20">GBC</text>
+</svg>

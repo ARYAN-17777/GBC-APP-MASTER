@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GBC Logo to PNG Converter</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #f0f0f0; font-family: Arial, sans-serif; }
+        .converter { margin: 20px 0; text-align: center; }
+        canvas { border: 1px solid #ddd; margin: 10px; }
+        button { background: #F77F00; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #e66f00; }
+        .logo-preview { margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🎨 GBC Logo PNG Converter</h1>
+    <p>Convert SVG logos to PNG format with orange background (#F77F00)</p>
+    
+    <div class="converter">
+        <h3>Home Page Logo (200x200)</h3>
+        <div class="logo-preview"><svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="100" cy="100" r="100" fill="#F77F00"/>
+  
+  <!-- GENERAL text (curved at top) -->
+  <path id="top-curve-200" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF" letter-spacing="0.4">
+    <textPath href="#top-curve-200" startOffset="50%" text-anchor="middle">GENERAL</textPath>
+  </text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="100" y="96" font-family="Arial, sans-serif" font-size="12" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="0.2">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="76" y="116" font-family="Arial, sans-serif" font-size="8" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="100" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="0.6">CANTEEN</text>
+    <text x="124" y="116" font-family="Arial, sans-serif" font-size="8" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (curved at bottom) -->
+  <path id="bottom-curve-200" d="M 170 100 A 70 70 0 0 1 30 100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="5" font-weight="normal" fill="#FFFFFF" letter-spacing="0.2">
+    <textPath href="#bottom-curve-200" startOffset="50%" text-anchor="middle">ESTD. LONDON, UK</textPath>
+  </text>
+</svg></div>
+        <canvas id="home-canvas" width="200" height="200"></canvas>
+        <br><button onclick="convertToPNG('home', 200, 'gbc-logo.png')">Download gbc-logo.png</button>
+    </div>
+    
+    <div class="converter">
+        <h3>App Icon (512x512)</h3>
+        <div class="logo-preview"><svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="256" cy="256" r="256" fill="#F77F00"/>
+  
+  <!-- GENERAL text (curved at top) -->
+  <path id="top-curve-512" d="M 76.8 256 A 179.2 179.2 0 0 1 435.2 256" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" fill="#FFFFFF" letter-spacing="1.024">
+    <textPath href="#top-curve-512" startOffset="50%" text-anchor="middle">GENERAL</textPath>
+  </text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="256" y="245.76" font-family="Arial, sans-serif" font-size="30.72" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="0.512">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="194.56" y="296.96" font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="256" y="296.96" font-family="Arial, sans-serif" font-size="25.6" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="1.536">CANTEEN</text>
+    <text x="317.44" y="296.96" font-family="Arial, sans-serif" font-size="20.48" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (curved at bottom) -->
+  <path id="bottom-curve-512" d="M 435.2 256 A 179.2 179.2 0 0 1 76.8 256" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="12.8" font-weight="normal" fill="#FFFFFF" letter-spacing="0.512">
+    <textPath href="#bottom-curve-512" startOffset="50%" text-anchor="middle">ESTD. LONDON, UK</textPath>
+  </text>
+</svg></div>
+        <canvas id="icon-canvas" width="512" height="512"></canvas>
+        <br><button onclick="convertToPNG('icon', 512, 'icon.png')">Download icon.png</button>
+    </div>
+    
+    <div class="converter">
+        <h3>Adaptive Icon (1024x1024)</h3>
+        <canvas id="adaptive-canvas" width="1024" height="1024"></canvas>
+        <br><button onclick="convertToPNG('adaptive', 1024, 'adaptive-icon.png')">Download adaptive-icon.png</button>
+    </div>
+    
+    <div class="converter">
+        <h3>Favicon (32x32)</h3>
+        <div class="logo-preview"><svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="16" cy="16" r="16" fill="#F77F00"/>
+  
+  <!-- Simplified text for small icons -->
+  <text x="16" y="12.8" font-family="Arial, sans-serif" font-size="3.84" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">GBC</text>
+  <text x="16" y="20.8" font-family="Arial, sans-serif" font-size="2.56" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">2023</text>
+</svg></div>
+        <canvas id="favicon-canvas" width="32" height="32"></canvas>
+        <br><button onclick="convertToPNG('favicon', 32, 'favicon.png')">Download favicon.png</button>
+    </div>
+
+    <script>
+        function svgToPng(svgElement, canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = new XMLSerializer().serializeToString(svgElement);
+            const img = new Image();
+            
+            return new Promise((resolve) => {
+                img.onload = function() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    resolve();
+                };
+                img.src = 'data:image/svg+xml;base64,' + btoa(data);
+            });
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        async function convertToPNG(type, size, filename) {
+            let svg, canvas;
+            
+            switch(type) {
+                case 'home':
+                    svg = document.querySelector('.converter:nth-child(2) svg');
+                    canvas = document.getElementById('home-canvas');
+                    break;
+                case 'icon':
+                    svg = document.querySelector('.converter:nth-child(3) svg');
+                    canvas = document.getElementById('icon-canvas');
+                    break;
+                case 'adaptive':
+                    // Create adaptive icon SVG
+                    const adaptiveSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    adaptiveSvg.innerHTML = '<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="512" cy="512" r="512" fill="#F77F00"/>
+  
+  <!-- GENERAL text (curved at top) -->
+  <path id="top-curve-1024" d="M 153.6 512 A 358.4 358.4 0 0 1 870.4 512" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="40.96" font-weight="bold" fill="#FFFFFF" letter-spacing="2.048">
+    <textPath href="#top-curve-1024" startOffset="50%" text-anchor="middle">GENERAL</textPath>
+  </text>
+  
+  <!-- BILIMORIA\'S text (main center) -->
+  <text x="512" y="491.52" font-family="Arial, sans-serif" font-size="61.44" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="1.024">BILIMORIA\'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="389.12" y="593.92" font-family="Arial, sans-serif" font-size="40.96" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="512" y="593.92" font-family="Arial, sans-serif" font-size="51.2" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="3.072">CANTEEN</text>
+    <text x="634.88" y="593.92" font-family="Arial, sans-serif" font-size="40.96" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (curved at bottom) -->
+  <path id="bottom-curve-1024" d="M 870.4 512 A 358.4 358.4 0 0 1 153.6 512" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="25.6" font-weight="normal" fill="#FFFFFF" letter-spacing="1.024">
+    <textPath href="#bottom-curve-1024" startOffset="50%" text-anchor="middle">ESTD. LONDON, UK</textPath>
+  </text>
+</svg>';
+                    document.body.appendChild(adaptiveSvg);
+                    svg = adaptiveSvg;
+                    canvas = document.getElementById('adaptive-canvas');
+                    break;
+                case 'favicon':
+                    svg = document.querySelector('.converter:nth-child(5) svg');
+                    canvas = document.getElementById('favicon-canvas');
+                    break;
+            }
+            
+            if (svg && canvas) {
+                await svgToPng(svg, canvas);
+                downloadCanvas(canvas, filename);
+                
+                if (type === 'adaptive') {
+                    document.body.removeChild(svg);
+                }
+            }
+        }
+        
+        // Auto-generate previews on load
+        window.onload = async function() {
+            console.log('Ready to convert logos to PNG format');
+        };
+    </script>
+</body>
+</html>

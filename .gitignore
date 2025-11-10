@@ -35,8 +35,38 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # typescript
 *.tsbuildinfo
+
+# Credentials and sensitive files
+credentials/
+credentials.json
+google-services.json
+GoogleService-Info.plist
+
+# Build artifacts
+android/app/build/
+android/build/
+android/.gradle/
+ios/build/
+*.apk
+*.aab
+*.ipa
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
 
 app-example

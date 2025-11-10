@@ -1,0 +1,26 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background circle -->
+  <circle cx="512" cy="512" r="512" fill="#000000"/>
+  
+  <!-- GENERAL text (top) -->
+  <text x="512" y="256" font-family="Arial, sans-serif" font-size="81.92" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="5.12">GENERAL</text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="512" y="409.6" font-family="Arial, sans-serif" font-size="92.16" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="3.072">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="358.4" y="563.2" font-family="Arial, sans-serif" font-size="71.68" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="512" y="563.2" font-family="Arial, sans-serif" font-size="81.92" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="8.192">CANTEEN</text>
+    <text x="665.6" y="563.2" font-family="Arial, sans-serif" font-size="71.68" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (bottom) -->
+  <text x="512" y="768" font-family="Arial, sans-serif" font-size="51.2" font-weight="normal" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="3.072">ESTD. LONDON, UK</text>
+</svg>

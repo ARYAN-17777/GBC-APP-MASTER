@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GBC Orange Icon Converter</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #f0f0f0; font-family: Arial, sans-serif; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .icon-item { text-align: center; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .icon-preview { margin: 15px 0; }
+        canvas { border: 1px solid #ddd; margin: 10px; }
+        button { background: #F77F00; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #e66f00; }
+        .preview-svg { width: 100px; height: 100px; }
+        .success { color: #28a745; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 GBC Orange Icon Converter</h1>
+        <p>Convert SVG icons to PNG format with orange background (#F77F00)</p>
+    </div>
+    
+    <div class="icon-grid">
+        <div class="icon-item">
+            <h3>App Icon (512x512)</h3>
+            <div class="icon-preview">
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="256" cy="256" r="256" fill="#F77F00"/>
+  
+  <!-- GENERAL text (top) -->
+  <text x="256" y="128" font-family="Arial, sans-serif" font-size="40.96" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="2.56">GENERAL</text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="256" y="204.8" font-family="Arial, sans-serif" font-size="46.08" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="1.536">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="179.2" y="281.6" font-family="Arial, sans-serif" font-size="35.84" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="256" y="281.6" font-family="Arial, sans-serif" font-size="40.96" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="4.096">CANTEEN</text>
+    <text x="332.8" y="281.6" font-family="Arial, sans-serif" font-size="35.84" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (bottom) -->
+  <text x="256" y="384" font-family="Arial, sans-serif" font-size="25.6" font-weight="normal" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="1.536">ESTD. LONDON, UK</text>
+</svg>
+</div>
+            <canvas id="icon-canvas" width="512" height="512"></canvas>
+            <br><button onclick="downloadIcon('icon')">Download icon.png</button>
+            <div id="icon-status"></div>
+        </div>
+        
+        <div class="icon-item">
+            <h3>Adaptive Icon (1024x1024)</h3>
+            <div class="icon-preview">
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="512" cy="512" r="512" fill="#F77F00"/>
+  
+  <!-- GENERAL text (top) -->
+  <text x="512" y="256" font-family="Arial, sans-serif" font-size="81.92" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="5.12">GENERAL</text>
+  
+  <!-- BILIMORIA'S text (main center) -->
+  <text x="512" y="409.6" font-family="Arial, sans-serif" font-size="92.16" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="3.072">BILIMORIA'S</text>
+  
+  <!-- 20 CANTEEN 23 text (center) -->
+  <g>
+    <text x="358.4" y="563.2" font-family="Arial, sans-serif" font-size="71.68" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">20</text>
+    <text x="512" y="563.2" font-family="Arial, sans-serif" font-size="81.92" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="8.192">CANTEEN</text>
+    <text x="665.6" y="563.2" font-family="Arial, sans-serif" font-size="71.68" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- ESTD. LONDON, UK text (bottom) -->
+  <text x="512" y="768" font-family="Arial, sans-serif" font-size="51.2" font-weight="normal" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="3.072">ESTD. LONDON, UK</text>
+</svg>
+</div>
+            <canvas id="adaptive-canvas" width="1024" height="1024"></canvas>
+            <br><button onclick="downloadIcon('adaptive')">Download adaptive-icon.png</button>
+            <div id="adaptive-status"></div>
+        </div>
+        
+        <div class="icon-item">
+            <h3>Favicon (32x32)</h3>
+            <div class="icon-preview">
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange background circle -->
+  <circle cx="16" cy="16" r="16" fill="#F77F00"/>
+  
+  <!-- Simplified text for small icons -->
+  <text x="16" y="11.2" font-family="Arial, sans-serif" font-size="3.84" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">GBC</text>
+  <text x="16" y="20.8" font-family="Arial, sans-serif" font-size="2.56" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle">2023</text>
+</svg>
+</div>
+            <canvas id="favicon-canvas" width="32" height="32"></canvas>
+            <br><button onclick="downloadIcon('favicon')">Download favicon.png</button>
+            <div id="favicon-status"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center; background: white; padding: 20px; border-radius: 8px;">
+        <h3>📋 Instructions</h3>
+        <p>1. Click each download button to generate PNG files</p>
+        <p>2. Replace the existing PNG files in assets/images/ with the downloaded files</p>
+        <p>3. The icons now have orange background (#F77F00) instead of black</p>
+        <p>4. Build your app to see the new orange icons</p>
+    </div>
+
+    <script>
+        function svgToPng(svgElement, canvas) {
+            const ctx = canvas.getContext('2d');
+            const data = new XMLSerializer().serializeToString(svgElement);
+            const img = new Image();
+            
+            return new Promise((resolve) => {
+                img.onload = function() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    resolve();
+                };
+                img.src = 'data:image/svg+xml;base64,' + btoa(data);
+            });
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        async function downloadIcon(type) {
+            let svg, canvas, filename, statusDiv;
+            
+            switch(type) {
+                case 'icon':
+                    svg = document.querySelector('.icon-item:nth-child(1) svg');
+                    canvas = document.getElementById('icon-canvas');
+                    filename = 'icon.png';
+                    statusDiv = document.getElementById('icon-status');
+                    break;
+                case 'adaptive':
+                    svg = document.querySelector('.icon-item:nth-child(2) svg');
+                    canvas = document.getElementById('adaptive-canvas');
+                    filename = 'adaptive-icon.png';
+                    statusDiv = document.getElementById('adaptive-status');
+                    break;
+                case 'favicon':
+                    svg = document.querySelector('.icon-item:nth-child(3) svg');
+                    canvas = document.getElementById('favicon-canvas');
+                    filename = 'favicon.png';
+                    statusDiv = document.getElementById('favicon-status');
+                    break;
+            }
+            
+            if (svg && canvas) {
+                statusDiv.innerHTML = 'Generating...';
+                await svgToPng(svg, canvas);
+                downloadCanvas(canvas, filename);
+                statusDiv.innerHTML = '<span class="success">✅ Downloaded!</span>';
+            }
+        }
+        
+        // Auto-generate previews on load
+        window.onload = async function() {
+            console.log('Orange icon converter loaded successfully!');
+        };
+    </script>
+</body>
+</html>
